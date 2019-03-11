@@ -1,0 +1,8 @@
+*.egg-info
+.eggs
+.idea
+.pytest_cache
+.python-version
+.tox
+__pycache__
+build
