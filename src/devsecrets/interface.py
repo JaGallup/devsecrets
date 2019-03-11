@@ -36,7 +36,7 @@ def _find_secrets_file(filename, directory):
         pathname = directory / filename
         if pathname.exists():
             return pathname
-        if directory.parent.samefile(directory):
+        if str(directory.parent) == str(directory):
             raise SecretsError('No file named {filename} found in {given_directory} or any of its parents'.format(
                 filename=filename, given_directory=given_directory))
         directory = directory.parent
