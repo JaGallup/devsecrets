@@ -7,7 +7,8 @@ import pytest
 from devsecrets import read_secret, SecretsError
 
 
-local_testfile_path = str(Path(__file__).parents[1] / 'off-branch' / '.secrets-test-file-absolute')
+local_testfile_path = str(
+    Path(__file__).parents[1] / 'off-branch' / '.secrets-test-file-absolute')
 
 
 @mock.patch.dict(os.environ, {'a': '@.secrets-test-file-good'})
@@ -33,7 +34,9 @@ def test_unicode_escape_in_value():
 
 @mock.patch.dict(os.environ, {'DB': '@.secrets-test-file-good'})
 def test_trailing_space():
-        assert read_secret('DB') == 'postgresql://user:YA0t%DY@ELDMT6v^Ehq3@r0&6IXQBS@ídéenna.example.com/fönkýdíbí '
+        assert read_secret('DB') == (
+            'postgresql://user:YA0t%DY@ELDMT6v^Ehq3@r0&6IXQBS'
+            '@ídéenna.example.com/fönkýdíbí ')
 
 
 @mock.patch.dict(os.environ, {'a': '@.secrets-test-file-bad'})
