@@ -32,6 +32,11 @@ def test_unicode_escape_in_value():
     assert read_secret('d') == '\N{GRINNING FACE}'
 
 
+@mock.patch.dict(os.environ, {'e': '@.secrets-test-file-good'})
+def test_line_terminator_esacpes():
+    assert read_secret('e') == 'line1\r\nline2\r\n'
+
+
 @mock.patch.dict(os.environ, {'DB': '@.secrets-test-file-good'})
 def test_trailing_space():
         assert read_secret('DB') == (
