@@ -24,6 +24,12 @@ setup(
     install_requires=[
         'toml'
     ],
+    extras_require={
+        'dev': [
+            'pytest-pep8',
+            'pytest-cov',
+        ]
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
