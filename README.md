@@ -1,5 +1,9 @@
 # devsecrets: read secrets from environment variables or files
 
+[![Linux build][tci]][tcl]
+[![Windows build][aci]][acl]
+[![Code coverage report][cci]][ccl]
+
 ## Why?
 
 It would be nice if a developer could check out a project and immediately run
@@ -103,3 +107,13 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 ## Related Projects
 
 [python-dotenv](https://github.com/theskumar/python-dotenv)
+
+
+[tci]: https://travis-ci.org/JaGallup/devsecrets.svg?branch=master
+[tcl]: https://travis-ci.org/JaGallup/devsecrets
+
+[aci]: https://ci.appveyor.com/api/projects/status/github/JaGallup/devsecrets-precursor?branch=master&svg=true
+[acl]: https://ci.appveyor.com/api/projects/status/github/JaGallup/devsecrets-precursor
+
+[cci]: https://codecov.io/gh/JaGallup/devsecrets/branch/master/graph/badge.svg
+[ccl]: https://codecov.io/gh/JaGallup/devsecrets
