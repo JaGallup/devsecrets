@@ -112,7 +112,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 [tci]: https://travis-ci.org/JaGallup/devsecrets.svg?branch=master
 [tcl]: https://travis-ci.org/JaGallup/devsecrets
 
-[aci]: https://ci.appveyor.com/api/projects/status/github/JaGallup/devsecrets-?branch=master&svg=true
+[aci]: https://ci.appveyor.com/api/projects/status/github/JaGallup/devsecrets?branch=master&svg=true
 [acl]: https://ci.appveyor.com/api/projects/status/github/JaGallup/devsecrets
 
 [cci]: https://codecov.io/gh/JaGallup/devsecrets/branch/master/graph/badge.svg
