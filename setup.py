@@ -8,7 +8,8 @@ from setuptools import setup
 def read_version(path):
     with open(path) as f:
         text = f.read()
-        version_match = re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]', text, re.M)
+        version_match = re.search(
+            r'^__version__ = [\'"]([^\'"]*)[\'"]', text, re.M)
         if version_match:
             return version_match.group(1)
     raise RuntimeError("Unable to find version string.")
@@ -16,7 +17,8 @@ def read_version(path):
 
 setup(
     name='devsecrets',
-    version=read_version(join(dirname(__file__), 'src', 'devsecrets', 'version.py')),
+    version=read_version(join(
+        dirname(__file__), 'src', 'devsecrets', 'version.py')),
     description="Read secrets from environment variables or files",
     keywords="secret secrets password passwords".split(),
     packages=['devsecrets'],

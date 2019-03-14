@@ -3,7 +3,6 @@ from pathlib import Path
 from unittest import mock
 
 import pytest
-
 from devsecrets import read_secret, SecretsError
 
 
@@ -39,9 +38,9 @@ def test_line_terminator_esacpes():
 
 @mock.patch.dict(os.environ, {'DB': '@.secrets-test-file-good'})
 def test_trailing_space():
-        assert read_secret('DB') == (
-            'postgresql://user:YA0t%DY@ELDMT6v^Ehq3@r0&6IXQBS'
-            '@ídéenna.example.com/fönkýdíbí ')
+    assert read_secret('DB') == (
+        'postgresql://user:YA0t%DY@ELDMT6v^Ehq3@r0&6IXQBS'
+        '@ídéenna.example.com/fönkýdíbí ')
 
 
 @mock.patch.dict(os.environ, {'a': '@.secrets-test-file-bad'})
@@ -75,3 +74,12 @@ def test_missing_from_file():
 def test_absolute():
     a = read_secret('a')
     assert a == 'b'
+
+
+_just_a_string = "something that doesn't begin with '@'"
+
+
+@mock.patch.dict(os.environ, {'a': _just_a_string})
+def test_direct_value():
+    v = read_secret('a')
+    assert v == _just_a_string
