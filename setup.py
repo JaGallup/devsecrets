@@ -22,6 +22,7 @@ with open(join(BASE, 'README.md')) as f:
 setup(
     name='devsecrets',
     version=read_version(join(BASE, 'src', 'devsecrets', 'version.py')),
+    url='https://github.com/JaGallup/devsecrets',
     description="Read secrets from environment variables or files",
     long_description=README,
     long_description_content_type='text/markdown',
@@ -35,6 +36,8 @@ setup(
         'dev': [
             'pytest-pep8',
             'pytest-cov',
+            'twine',
+            'keyring',
         ]
     },
     classifiers=[
