@@ -12,11 +12,13 @@ because that would entail checking in secrets in run configurations.
 
 devsecrets gets you just a little closer to the ideal by letting environment
 variables point to files containing the sensitive information.
+
 It doesn't help with creating, securing, or distributing those files.
  
 ## How?
 
 Instead of reading `os.environ` directly, use `devsecrets.read_secret()` in your code.
+For instance, if accessing a `DATABASE_URL` variable:
 ```
 from devsecrets import read_secret
 
@@ -31,6 +33,15 @@ DATABASE_URL="driver://user:pass@host/dbname"
 ```
 
 Have your version control system ignore your .secrets file.
+
+## What about non-development environments?
+
+Environment values that don't begin with the @-symbol are returned as-is by
+`read_secret()`, so if you already have your secrets in environment variables
+in production, there's no need to do anything differently.
+
+If you do want to use secrets files in production, it probably makes sense
+to point to them with absolute paths.
 
 ## Details
 
@@ -83,7 +94,7 @@ tox
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning [releases](https://github.com/JaGallup/devsecrets-precursor/releases). 
 
 ## License
 
