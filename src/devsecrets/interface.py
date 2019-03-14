@@ -25,7 +25,8 @@ def read_secret(name):
         outer_frame = inspect.currentframe().f_back
         caller_filename, *_ = inspect.getframeinfo(outer_frame)
         caller_directory = Path(caller_filename).parent
-        secrets_filename = _find_secrets_file(secrets_filename, caller_directory)
+        secrets_filename = _find_secrets_file(
+            secrets_filename, caller_directory)
 
     return _read_secret_from_file(name, secrets_filename)
 
@@ -37,8 +38,10 @@ def _find_secrets_file(filename, directory):
         if pathname.exists():
             return pathname
         if str(directory.parent) == str(directory):
-            raise SecretsError('No file named {filename} found in {given_directory} or any of its parents'.format(
-                filename=filename, given_directory=given_directory))
+            raise SecretsError(
+                'No file named {filename} found in {given_directory}'
+                ' or any of its parents'.format(
+                    filename=filename, given_directory=given_directory))
         directory = directory.parent
 
 
@@ -46,10 +49,13 @@ def _read_secret_from_file(name, secrets_filename):
     try:
         data = toml.load(secrets_filename)
     except toml.TomlDecodeError as e:
-        raise SecretsError('Secrets file {} cannot be parsed as TOML'.format(secrets_filename)) from e
+        error = SecretsError('Secrets file {} cannot be parsed as TOML'.format(
+            secrets_filename))
+        raise error from e
 
     if name in data:
         return data[name]
     else:
-        raise SecretsError('Secrets file {secrets_filename} does not define {name}'.format(
-            secrets_filename=secrets_filename, name=name))
+        raise SecretsError(
+            'Secrets file {secrets_filename} does not define{name}'.format(
+                secrets_filename=secrets_filename, name=name))
