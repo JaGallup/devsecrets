@@ -15,11 +15,16 @@ def read_version(path):
     raise RuntimeError("Unable to find version string.")
 
 
+BASE = dirname(__file__)
+with open(join(BASE, 'README.md')) as f:
+    README = f.read()
+
 setup(
     name='devsecrets',
-    version=read_version(join(
-        dirname(__file__), 'src', 'devsecrets', 'version.py')),
+    version=read_version(join(BASE, 'src', 'devsecrets', 'version.py')),
     description="Read secrets from environment variables or files",
+    long_description=README,
+    long_description_content_type='text/markdown',
     keywords="secret secrets password passwords".split(),
     packages=['devsecrets'],
     package_dir={'devsecrets': 'src/devsecrets'},
